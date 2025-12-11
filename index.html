@@ -4,14 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Banquet Hall Website Brief</title>
+<title>Banquet Hall Website</title>
 <style>
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f2f2f7; padding: 20px; color: #1c1c1e; }
     .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 
 ```
 h1 { margin-top: 0; color: #000; font-size: 24px; text-align: center; margin-bottom: 10px; }
-p.desc { text-align: center; color: #666; margin-bottom: 20px; font-size: 15px; line-height: 1.4; }
 
 .instruction { background-color: #e5f6fd; color: #014361; padding: 15px; border-radius: 8px; font-size: 14px; text-align: center; margin-bottom: 30px; border: 1px solid #bce8f1; }
 
@@ -42,28 +41,27 @@ input[type="text"], input[type="email"], input[type="tel"], select {
 .success-msg { color: #34c759; font-size: 18px; display: none; margin-bottom: 15px; font-weight: bold; text-align: center; background: #e8f8ed; padding: 20px; border-radius: 8px; line-height: 1.5; }
 
 #manualCopyArea {
-    display: none; width: 100%; height: 200px; padding: 10px; 
-    margin-top: 20px; border: 2px dashed #007aff; background: #f0f9ff;
-    font-family: monospace; font-size: 12px; box-sizing: border-box;
+    display: none; width: 100%; height: 250px; padding: 15px; 
+    margin-top: 20px; border: 3px solid #007aff; background: #f0f9ff;
+    font-family: monospace; font-size: 13px; box-sizing: border-box;
+    border-radius: 10px; line-height: 1.6;
 }
-.manual-instr { display: none; text-align: center; color: #007aff; font-weight: bold; margin-top: 15px; }
-```
+.manual-instr { display: none; text-align: center; color: #007aff; font-weight: bold; margin-top: 15px; font-size: 16px; }
 
 </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Banquet Hall Website Brief</h1>
+    <h1>Banquet Hall Website</h1>
 
-```
 <div class="instruction">
     1. Fill in all answers.<br>
     2. Click the Blue Button.<br>
-    3. Paste into an email to Artavazd.
+    3. Paste into an email or text.<br>
 </div>
 
-<div id="errorMessage" class="error-msg">⚠️ Please fill in all required fields!</div>
+<div id="errorMessage" class="error-msg">⚠️ Please fill in all fields!</div>
 
 <form id="clientForm" onsubmit="return false;">
     
@@ -84,7 +82,7 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     <input type="text" id="loc2" name="loc2">
 
     <div class="section-title">2. Branding</div>
-    <div class="note">⚠️ Please attach Logo & Photos to the email manually.</div>
+    <div class="note">⚠️ Please send Logo & Photos if availabel.</div>
     
     <label class="required">Do you have a logo?</label>
     <select id="hasLogo" name="hasLogo">
@@ -135,14 +133,13 @@ input[type="text"], input[type="email"], input[type="tel"], select {
         <option value="No">No</option>
     </select>
 
-    <div id="successMessage" class="success-msg">✅ Text Copied!<br>Now paste to email</div>
+    <div id="successMessage" class="success-msg">✅ Text Copied!<br>Now paste to email or text.</div>
     
     <button type="button" id="copyButton">COPY RESULTS TO CLIPBOARD</button>
     
-    <p class="manual-instr" id="manualInstr">👇 Copy the text inside this box 👇</p>
+    <p class="manual-instr" id="manualInstr">📋 Tap and hold the text below, then select "Copy"</p>
     <textarea id="manualCopyArea" readonly></textarea>
 </form>
-```
 
 </div>
 
@@ -262,7 +259,6 @@ input[type="text"], input[type="email"], input[type="tel"], select {
             try {
                 const successful = document.execCommand('copy');
                 if (successful) {
-                    textArea.style.display = 'none';
                     successMsg.style.display = 'block';
                     setTimeout(function() {
                         successMsg.style.display = 'none';
@@ -280,7 +276,6 @@ input[type="text"], input[type="email"], input[type="tel"], select {
             manualInstr.style.display = 'block';
             textArea.value = text;
             textArea.select();
-            alert('⚠️ Auto-copy was blocked.\n\nPlease manually copy the text from the box below.');
         }
     }
 
@@ -289,4 +284,3 @@ input[type="text"], input[type="email"], input[type="tel"], select {
 </script>
 
 </body>
-</html>
