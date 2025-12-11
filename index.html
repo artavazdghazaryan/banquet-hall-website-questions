@@ -6,275 +6,470 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Banquet Hall Website</title>
 <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f2f2f7; padding: 20px; color: #1c1c1e; }
-    .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-h1 { margin-top: 0; color: #000; font-size: 24px; text-align: center; margin-bottom: 10px; }
-
-.instruction { background-color: #e5f6fd; color: #014361; padding: 15px; border-radius: 8px; font-size: 14px; text-align: center; margin-bottom: 30px; border: 1px solid #bce8f1; }
-
-.section-title { font-size: 13px; font-weight: 800; text-transform: uppercase; color: #8e8e93; margin-top: 25px; margin-bottom: 15px; letter-spacing: 0.5px; }
-
-label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 15px; }
-label.required::after { content: " *"; color: #ff3b30; }
-
-input[type="text"], input[type="email"], input[type="tel"], select { 
-    width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid #d1d1d6; 
-    border-radius: 10px; box-sizing: border-box; font-size: 16px;
-    background-color: #fff; -webkit-appearance: none;
+body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    background-color: #f2f2f7; 
+    padding: 20px; 
+    color: #1c1c1e; 
 }
 
-.checkbox-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-.checkbox-item { background: #f2f2f7; padding: 10px; border-radius: 8px; display: flex; align-items: center; font-size: 14px; }
-.checkbox-item input { margin-right: 10px; width: 20px; height: 20px; }
-
-#copyButton { 
-    width: 100%; padding: 18px; background-color: #007aff; color: white; 
-    border: none; border-radius: 12px; font-size: 17px; font-weight: 700; 
-    cursor: pointer; margin-top: 20px; box-shadow: 0 4px 12px rgba(0,122,255,0.3);
+.container {
+max-width: 600px;
+margin: 0 auto;
+background: white;
+padding: 30px;
+border-radius: 16px;
+box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
-#copyButton:active { transform: scale(0.98); background-color: #0063cf; }
 
-.note { font-size: 13px; color: #666; background: #fff3cd; padding: 10px; border-radius: 8px; margin-bottom: 15px; }
-.error-msg { color: #ff3b30; font-size: 14px; display: none; margin-bottom: 15px; font-weight: bold; text-align: center; }
-.success-msg { color: #34c759; font-size: 18px; display: none; margin-bottom: 15px; font-weight: bold; text-align: center; background: #e8f8ed; padding: 20px; border-radius: 8px; line-height: 1.5; }
-
-#manualCopyArea {
-    display: none; width: 100%; height: 250px; padding: 15px; 
-    margin-top: 20px; border: 3px solid #007aff; background: #f0f9ff;
-    font-family: monospace; font-size: 13px; box-sizing: border-box;
-    border-radius: 10px; line-height: 1.6;
+h1 {
+margin-top: 0;
+color: #000;
+font-size: 24px;
+text-align: center;
+margin-bottom: 20px;
 }
-.manual-instr { display: none; text-align: center; color: #007aff; font-weight: bold; margin-top: 15px; font-size: 16px; }
 
+.instruction {
+background-color: #e5f6fd;
+color: #014361;
+padding: 15px;
+border-radius: 8px;
+font-size: 14px;
+text-align: center;
+margin-bottom: 30px;
+border: 1px solid #bce8f1;
+}
+
+.section-title {
+font-size: 13px;
+font-weight: 800;
+text-transform: uppercase;
+color: #8e8e93;
+margin-top: 25px;
+margin-bottom: 15px;
+}
+
+label {
+display: block;
+margin-bottom: 8px;
+font-weight: 600;
+font-size: 15px;
+}
+
+/* FIX 1: Using straight quotes for CSS content */
+label.required::after {
+content: " *"; 
+color: #ff3b30;
+}
+
+/* FIX 2: Using straight quotes for attribute selectors */
+input[type="text"],
+input[type="tel"],
+select,
+textarea {
+width: 100%;
+padding: 14px;
+margin-bottom: 15px;
+border: 1px solid #d1d1d6;
+border-radius: 10px;
+box-sizing: border-box;
+font-size: 16px;
+background-color: #fff;
+font-family: inherit;
+}
+
+textarea {
+resize: vertical;
+min-height: 80px;
+}
+
+.checkbox-container {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 12px;
+margin-bottom: 20px;
+}
+
+.checkbox-item {
+background: #f2f2f7;
+padding: 10px;
+border-radius: 8px;
+display: flex;
+align-items: center;
+font-size: 14px;
+}
+
+.checkbox-item input {
+margin-right: 10px;
+width: 20px;
+height: 20px;
+}
+
+.message {
+font-size: 16px;
+font-weight: bold;
+text-align: center;
+padding: 15px;
+border-radius: 8px;
+margin-bottom: 15px;
+display: none;
+}
+
+.error {
+color: #ff3b30;
+background: #ffe5e5;
+}
+
+.success {
+color: #34c759;
+background: #e8f8ed;
+}
+
+#copyButton {
+width: 100%;
+padding: 18px;
+background-color: #007aff;
+color: white;
+border: none;
+border-radius: 12px;
+font-size: 17px;
+font-weight: 700;
+cursor: pointer;
+box-shadow: 0 4px 12px rgba(0,122,255,0.3);
+}
+
+#copyButton:active {
+transform: scale(0.98);
+background-color: #0063cf;
+}
+
+#resultArea {
+display: none;
+width: 100%;
+height: 300px;
+padding: 15px;
+margin-top: 20px;
+border: 3px solid #007aff;
+background: #f0f9ff;
+font-family: monospace;
+font-size: 13px;
+box-sizing: border-box;
+border-radius: 10px;
+line-height: 1.6;
+}
+
+.copy-instruction {
+display: none;
+text-align: center;
+color: #007aff;
+font-weight: bold;
+margin-top: 15px;
+font-size: 16px;
+}
 </style>
+
 </head>
 <body>
 
 <div class="container">
     <h1>Banquet Hall Website</h1>
-
 <div class="instruction">
-    1. Fill in all answers.<br>
-    2. Click the Blue Button.<br>
-    3. Paste into an email or text.<br>
+    1. Fill in all answers<br>
+    2. Click the Blue Button<br>
+    3. Paste into email or text
 </div>
 
-<div id="errorMessage" class="error-msg">⚠️ Please fill in all fields!</div>
+<div id="message" class="message"></div>
 
-<form id="clientForm" onsubmit="return false;">
-    
-    <div class="section-title">1. Business Info</div>
-    <label class="required">Your Name</label>
-    <input type="text" id="yourName" name="yourName">
-    
-    <label class="required">Business Name</label>
-    <input type="text" id="businessName" name="businessName">
-    
-    <label class="required">Business Phone</label>
-    <input type="tel" id="businessPhone" name="businessPhone">
-    
-    <label class="required">Location 1 Address</label>
-    <input type="text" id="loc1" name="loc1">
-    
-    <label class="required">Location 2 Address</label>
-    <input type="text" id="loc2" name="loc2">
+<div class="section-title">1. Business Info</div>
 
-    <div class="section-title">2. Branding</div>
-    <label class="required">Do you have a logo?</label>
-    <select id="hasLogo" name="hasLogo">
-        <option value="">Select...</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-        <option value="Not Sure">Not sure</option>
-    </select>
-    
-    <label class="required">Do you have event photos?</label>
-    <select id="hasPhotos" name="hasPhotos">
-        <option value="">Select...</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-    </select>
+<label class="required">Your Name</label>
+<input type="text" id="yourName">
 
-    <div class="section-title">3. Functionality</div>
-    <label class="required">Need a Booking Calendar?</label>
-    <select id="hasCalendar" name="hasCalendar">
-        <option value="">Select...</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-        <option value="Maybe">Maybe</option>
-    </select>
+<label class="required">Business Name</label>
+<input type="text" id="businessName">
 
-    <label class="required">Event Pages Needed</label>
-    <div class="checkbox-container">
-        <div class="checkbox-item"><input type="checkbox" class="event-type" value="Weddings" name="events"> Weddings</div>
-        <div class="checkbox-item"><input type="checkbox" class="event-type" value="Quinceañera" name="events"> Quinceañera</div>
-        <div class="checkbox-item"><input type="checkbox" class="event-type" value="Corporate" name="events"> Corporate</div>
-        <div class="checkbox-item"><input type="checkbox" class="event-type" value="Birthdays" name="events"> Birthdays</div>
-        <div class="checkbox-item"><input type="checkbox" class="event-type" value="Baby Showers" name="events"> Baby Showers</div>
-        <div class="checkbox-item"><input type="checkbox" class="event-type" value="Engagements" name="events"> Engagements</div>
+<label class="required">Business Phone</label>
+<input type="tel" id="businessPhone">
+
+<label class="required">Location 1 Address</label>
+<input type="text" id="loc1">
+
+<label class="required">Location 2 Address</label>
+<input type="text" id="loc2">
+
+<div class="section-title">2. Current Situation</div>
+
+<label class="required">Do you currently have a website?</label>
+<select id="hasWebsite">
+    <option value="">Select...</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+    <option value="Under construction">Under construction</option>
+</select>
+
+<label class="required">Do you have a domain name?</label>
+<select id="hasDomain">
+    <option value="">Select...</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+    <option value="Need help">Need help</option>
+</select>
+
+<div class="section-title">3. Branding</div>
+
+<label class="required">Do you have a logo?</label>
+<select id="hasLogo">
+    <option value="">Select...</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+    <option value="Not Sure">Not sure</option>
+</select>
+
+<label class="required">Do you have event photos?</label>
+<select id="hasPhotos">
+    <option value="">Select...</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+</select>
+
+<div class="section-title">4. Website Features</div>
+
+<label class="required">Need a Booking Calendar?</label>
+<select id="hasCalendar">
+    <option value="">Select...</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+    <option value="Maybe">Maybe</option>
+</select>
+
+<label class="required">Event Pages Needed</label>
+<div class="checkbox-container">
+    <div class="checkbox-item">
+        <input type="checkbox" class="event-type" value="Weddings"> Weddings
     </div>
+    <div class="checkbox-item">
+        <input type="checkbox" class="event-type" value="Quinceañera"> Quinceañera
+    </div>
+    <div class="checkbox-item">
+        <input type="checkbox" class="event-type" value="Corporate"> Corporate
+    </div>
+    <div class="checkbox-item">
+        <input type="checkbox" class="event-type" value="Birthdays"> Birthdays
+    </div>
+    <div class="checkbox-item">
+        <input type="checkbox" class="event-type" value="Baby Showers"> Baby Showers
+    </div>
+    <div class="checkbox-item">
+        <input type="checkbox" class="event-type" value="Engagements"> Engagements
+    </div>
+</div>
 
-    <label class="required">Is content/text ready?</label>
-    <select id="hasContent" name="hasContent">
-        <option value="">Select...</option>
-        <option value="Yes">Yes, ready</option>
-        <option value="No">No, need help</option>
-        <option value="Partially">Partially</option>
-    </select>
+<label class="required">Additional Features Needed</label>
+<div class="checkbox-container">
+    <div class="checkbox-item">
+        <input type="checkbox" class="feature-type" value="Contact Form"> Contact Form
+    </div>
+    <div class="checkbox-item">
+        <input type="checkbox" class="feature-type" value="Photo Gallery"> Photo Gallery
+    </div>
+    <div class="checkbox-item">
+        <input type="checkbox" class="feature-type" value="Virtual Tour"> Virtual Tour
+    </div>
+    <div class="checkbox-item">
+        <input type="checkbox" class="feature-type" value="Testimonials"> Testimonials
+    </div>
+    <div class="checkbox-item">
+        <input type="checkbox" class="feature-type" value="Pricing Page"> Pricing Page
+    </div>
+    <div class="checkbox-item">
+        <input type="checkbox" class="feature-type" value="FAQ Section"> FAQ Section
+    </div>
+</div>
 
-    <label class="required">Will you update it yourself?</label>
-    <select id="selfUpdate" name="selfUpdate">
-        <option value="">Select...</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-    </select>
+<label class="required">Is content/text ready?</label>
+<select id="hasContent">
+    <option value="">Select...</option>
+    <option value="Yes">Yes, ready</option>
+    <option value="No">No, need help</option>
+    <option value="Partially">Partially</option>
+</select>
 
-    <div id="successMessage" class="success-msg">✅ Text Copied!<br>Now paste to email or text.</div>
-    
-    <button type="button" id="copyButton">COPY RESULTS TO CLIPBOARD</button>
-    
-    <p class="manual-instr" id="manualInstr">📋 Tap and hold the text below, then select "Copy"</p>
-    <textarea id="manualCopyArea" readonly></textarea>
-</form>
+<label class="required">Will you update it yourself?</label>
+<select id="selfUpdate">
+    <option value="">Select...</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+</select>
+
+<div class="section-title">5. Project Details</div>
+
+
+<label class="required">When do you need it completed?</label>
+<select id="timeline">
+    <option value="">Select...</option>
+    <option value="ASAP">ASAP</option>
+    <option value="Within 1 month">Within 1 month</option>
+    <option value="2-3 months">2-3 months</option>
+    <option value="Flexible">Flexible</option>
+</select>
+
+<label class="required">Main goal for the website?</label>
+<select id="mainGoal">
+    <option value="">Select...</option>
+    <option value="Get more bookings">Get more bookings</option>
+    <option value="Look professional">Look professional</option>
+    <option value="Show our venues">Show our venues</option>
+    <option value="All of the above">All of the above</option>
+</select>
+
+<label>Any competitor or inspiration websites? (Optional)</label>
+<textarea id="competitors" placeholder="Enter website URLs or names..."></textarea>
+
+<button type="button" id="copyButton">COPY RESULTS TO CLIPBOARD</button>
+
+<p id="copyInstruction" class="copy-instruction">📋 Tap and hold the text below, then select Copy</p>
+<textarea id="resultArea" readonly></textarea>
 
 </div>
 
 <script>
-(function() {
-    'use strict';
+document.getElementById('copyButton').onclick = function() {
+    var msg = document.getElementById('message');
+    var resultArea = document.getElementById('resultArea');
+    var copyInstruction = document.getElementById('copyInstruction');
     
-    function validateForm() {
-        let isValid = true;
-        const errorMsg = document.getElementById('errorMessage');
+    // Get all values
+    var name = document.getElementById('yourName').value;
+    var business = document.getElementById('businessName').value;
+    var phone = document.getElementById('businessPhone').value;
+    var loc1 = document.getElementById('loc1').value;
+    var loc2 = document.getElementById('loc2').value;
+    var hasWebsite = document.getElementById('hasWebsite').value;
+    var hasDomain = document.getElementById('hasDomain').value;
+    var logo = document.getElementById('hasLogo').value;
+    var photos = document.getElementById('hasPhotos').value;
+    var calendar = document.getElementById('hasCalendar').value;
+    var content = document.getElementById('hasContent').value;
+    var update = document.getElementById('selfUpdate').value;
+    var timeline = document.getElementById('timeline').value;
+    var mainGoal = document.getElementById('mainGoal').value;
+    var competitors = document.getElementById('competitors').value;
+    
+    // Check if all required fields are filled
+    if (!name || !business || !phone || !loc1 || !loc2 || !hasWebsite || !hasDomain || !logo || !photos || !calendar || !content || !update || !timeline || !mainGoal) {
+        msg.className = 'message error';
+        msg.textContent = '⚠️ Please fill in all required fields!';
+        msg.style.display = 'block';
+        window.scrollTo(0, 0);
         
-        const requiredFields = [
-            'yourName',
-            'businessName', 
-            'businessPhone',
-            'loc1',
-            'loc2',
-            'hasLogo',
-            'hasPhotos',
-            'hasCalendar',
-            'hasContent',
-            'selfUpdate'
-        ];
-        
-        requiredFields.forEach(function(fieldId) {
-            const field = document.getElementById(fieldId);
-            const value = field.value;
-            
-            if (!value || value.trim() === '' || value === 'Select...') {
-                field.style.borderColor = '#ff3b30';
-                field.style.backgroundColor = '#fff0f0';
-                isValid = false;
-            } else {
-                field.style.borderColor = '#d1d1d6';
-                field.style.backgroundColor = '#fff';
-            }
-        });
-
-        if (!isValid) {
-            errorMsg.style.display = 'block';
-            window.scrollTo(0, 0);
-        } else {
-            errorMsg.style.display = 'none';
-        }
-        
-        return isValid;
+        // Hide result area if validation fails
+        resultArea.style.display = 'none';
+        copyInstruction.style.display = 'none';
+        return;
     }
-
-    function getFormattedText() {
-        const name = document.getElementById('yourName').value;
-        const business = document.getElementById('businessName').value;
-        const phone = document.getElementById('businessPhone').value;
-        const loc1 = document.getElementById('loc1').value;
-        const loc2 = document.getElementById('loc2').value;
-        const logo = document.getElementById('hasLogo').value;
-        const photos = document.getElementById('hasPhotos').value;
-        const calendar = document.getElementById('hasCalendar').value;
-        const content = document.getElementById('hasContent').value;
-        const update = document.getElementById('selfUpdate').value;
-        
-        const eventCheckboxes = document.querySelectorAll('.event-type:checked');
-        let events = [];
-        eventCheckboxes.forEach(function(checkbox) {
-            events.push(checkbox.value);
-        });
-        const eventsList = events.length > 0 ? events.join(', ') : 'None selected';
-
-        const text = 'Hi Artavazd,\n\nWebsite Info for ' + business + ':\n\n' +
-            '1. BUSINESS\n' +
-            'Name: ' + name + '\n' +
-            'Phone: ' + phone + '\n' +
-            'Loc 1: ' + loc1 + '\n' +
-            'Loc 2: ' + loc2 + '\n\n' +
-            '2. BRANDING\n' +
-            'Logo: ' + logo + '\n' +
-            'Photos: ' + photos + '\n' +
-            '(Files Attached)\n\n' +
-            '3. FEATURES\n' +
-            'Calendar: ' + calendar + '\n' +
-            'Events: ' + eventsList + '\n' +
-            'Content: ' + content + '\n' +
-            'Self Update: ' + update;
-            
-        return text;
+    
+    // Get selected events
+    var eventBoxes = document.querySelectorAll('.event-type:checked');
+    var events = [];
+    for (var i = 0; i < eventBoxes.length; i++) {
+        events.push(eventBoxes[i].value);
     }
-
-    function copyToClipboard() {
-        if (!validateForm()) {
-            return;
-        }
-
-        const text = getFormattedText();
-        const textArea = document.getElementById('manualCopyArea');
-        const manualInstr = document.getElementById('manualInstr');
-        const successMsg = document.getElementById('successMessage');
-
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(function() {
-                successMsg.style.display = 'block';
+    var eventsList = events.length > 0 ? events.join(', ') : 'None selected';
+    
+    // Get selected features
+    var featureBoxes = document.querySelectorAll('.feature-type:checked');
+    var features = [];
+    for (var i = 0; i < featureBoxes.length; i++) {
+        features.push(featureBoxes[i].value);
+    }
+    var featuresList = features.length > 0 ? features.join(', ') : 'None selected';
+    
+    // Build the text
+    var text = 'Hi Artavazd,\n\n';
+    text += 'Website Info for ' + business + ':\n\n';
+    text += '1. BUSINESS\n';
+    text += 'Name: ' + name + '\n';
+    text += 'Phone: ' + phone + '\n';
+    text += 'Loc 1: ' + loc1 + '\n';
+    text += 'Loc 2: ' + loc2 + '\n\n';
+    text += '2. CURRENT SITUATION\n';
+    text += 'Has Website: ' + hasWebsite + '\n';
+    text += 'Has Domain: ' + hasDomain + '\n\n';
+    text += '3. BRANDING\n';
+    text += 'Logo: ' + logo + '\n';
+    text += 'Photos: ' + photos + '\n\n';
+    text += '4. FEATURES\n';
+    text += 'Calendar: ' + calendar + '\n';
+    text += 'Event Pages: ' + eventsList + '\n';
+    text += 'Additional Features: ' + featuresList + '\n';
+    text += 'Content Ready: ' + content + '\n';
+    text += 'Self Update: ' + update + '\n\n';
+    text += '5. PROJECT DETAILS\n';
+    text += 'Timeline: ' + timeline + '\n';
+    text += 'Main Goal: ' + mainGoal + '\n';
+    if (competitors) {
+        text += 'Inspiration Sites: ' + competitors + '\n';
+    }
+    
+    // Try to copy
+    var copySuccess = false;
+    
+    // Method 1: Modern clipboard API
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+            msg.className = 'message success';
+            msg.textContent = '✅ Text Copied!\nNow paste to email';
+            msg.style.display = 'block';
+            resultArea.style.display = 'none';
+            copyInstruction.style.display = 'none';
+            setTimeout(function() {
+                msg.style.display = 'none';
+            }, 5000);
+        }).catch(function() {
+            showManualCopy(text);
+        });
+    } else {
+        // Method 2: Old fashioned way
+        // Try execCommand first
+        resultArea.value = text;
+        resultArea.style.display = 'block';
+        resultArea.select();
+        resultArea.setSelectionRange(0, 99999);
+        
+        try {
+            copySuccess = document.execCommand('copy');
+            if (copySuccess) {
+                msg.className = 'message success';
+                msg.textContent = '✅ Text Copied!\nNow paste to email';
+                msg.style.display = 'block';
+                resultArea.style.display = 'none';
+                copyInstruction.style.display = 'none';
                 setTimeout(function() {
-                    successMsg.style.display = 'none';
+                    msg.style.display = 'none';
                 }, 5000);
-            }).catch(function(err) {
-                fallbackCopy();
-            });
-        } else {
-            fallbackCopy();
-        }
-        
-        function fallbackCopy() {
-            textArea.style.display = 'block';
-            textArea.value = text;
-            textArea.focus();
-            textArea.select();
-            textArea.setSelectionRange(0, 99999);
-            
-            try {
-                const successful = document.execCommand('copy');
-                if (successful) {
-                    successMsg.style.display = 'block';
-                    setTimeout(function() {
-                        successMsg.style.display = 'none';
-                    }, 5000);
-                } else {
-                    showManualCopy();
-                }
-            } catch (err) {
-                showManualCopy();
+            } else {
+                showManualCopy(text);
             }
-        }
-        
-        function showManualCopy() {
-            textArea.style.display = 'block';
-            manualInstr.style.display = 'block';
-            textArea.value = text;
-            textArea.select();
+        } catch (err) {
+            showManualCopy(text);
         }
     }
-
-    document.getElementById('copyButton').addEventListener('click', copyToClipboard);
-})();
+    
+    // Function to handle the manual copy fallback
+    function showManualCopy(text) {
+        resultArea.value = text;
+        resultArea.style.display = 'block';
+        copyInstruction.style.display = 'block';
+        resultArea.select();
+        
+        msg.className = 'message error';
+        msg.textContent = '⚠️ Auto-Copy Failed. Please follow instructions below the button to manually copy the text.';
+        msg.style.display = 'block';
+    }
+};
 </script>
+
+</body>
+</html>
